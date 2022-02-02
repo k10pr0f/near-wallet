@@ -178,7 +178,7 @@ export const selectTokensWithMetadataForAccountId = createSelector(
                 contractName,
                 balance,
                 onChainFTMetadata: allContractMetadata[contractName] || {},
-                coingeckoMetadata: {},
+                fiatValueMetadata: {},
             }))
 );
 
