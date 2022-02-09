@@ -198,6 +198,6 @@ export const selectNEARAsTokenWithMetadata = createSelector(
     (nearBalance, nearTokenFiatValueUSD) => ({
         balance: nearBalance?.balanceAvailable || "",
         onChainFTMetadata: { symbol: "NEAR" },
-        coingeckoMetadata: { usd: nearTokenFiatValueUSD },
+        fiatValueMetadata: { usd: nearTokenFiatValueUSD },
     })
 );
