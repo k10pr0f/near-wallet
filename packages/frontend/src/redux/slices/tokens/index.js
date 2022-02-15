@@ -5,11 +5,9 @@ import { createSelector } from 'reselect';
 
 import { WHITELISTED_CONTRACTS } from '../../../config';
 import FungibleTokens from '../../../services/FungibleTokens';
-import { selectAvailableBalance } from '../account';
 import createParameterSelector from '../createParameterSelector';
 import handleAsyncThunkStatus from '../handleAsyncThunkStatus';
 import initialErrorState from '../initialErrorState';
-import { selectNearTokenFiatValueUSD } from '../tokenFiatValues';
 
 const SLICE_NAME = 'tokens';
 
@@ -191,13 +189,4 @@ export const selectTokensLoading = createSelector(
 const selectOneTokenLoading = createSelector(
     [selectOneTokenFromOwnedTokens],
     (token) => token.status.loading
-);
-
-export const selectNEARAsTokenWithMetadata = createSelector(
-    [selectAvailableBalance, selectNearTokenFiatValueUSD],
-    (balanceAvailable, usd) => ({
-        balance: balanceAvailable,
-        onChainFTMetadata: { symbol: "NEAR" },
-        coingeckoMetadata: { usd },
-    })
 );
