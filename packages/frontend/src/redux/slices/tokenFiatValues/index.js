@@ -4,8 +4,8 @@ import { createSelector } from 'reselect';
 
 import { ACCOUNT_HELPER_URL } from '../../../config';
 import sendJson from '../../../tmp_fetch_send_json';
-import handleAsyncThunkStatus from '../handleAsyncThunkStatus';
 import { fetchTokenPrices, fetchTokenWhiteList } from '../../../utils/ref-finance';
+import handleAsyncThunkStatus from '../handleAsyncThunkStatus';
 import initialErrorState from '../initialErrorState';
 
 const SLICE_NAME = 'tokenFiatValues';
@@ -43,8 +43,6 @@ const initialState = {
         loading: false,
         error: initialErrorState
     },
-    loading: false,
-    error: initialErrorState,
     tokens: {},
     tokenWhiteList: [],
 };
