@@ -207,7 +207,7 @@ export const allowLogin = () => async (dispatch, getState) => {
         }
         const availableKeys = await wallet.getAvailableKeys();
         
-        const allKeys = availableKeys.map(key => key.toString());
+        const allKeys = availableKeys.map((key) => key.toString());
         const parsedUrl = new URL(successUrl);
         parsedUrl.searchParams.set('account_id', wallet.accountId);
         if (publicKey) {
@@ -597,7 +597,7 @@ export const { makeAccountActive, refreshAccountExternal, refreshUrl, updateStak
                 ...await wallet.getBalance(accountId)
             }
         }),
-        accountId => ({
+        (accountId) => ({
             accountId,
             ...showAlert({ onlyError: true, data: { accountId } })
         })

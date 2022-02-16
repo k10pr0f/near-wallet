@@ -65,7 +65,7 @@ const fetchTokens = createAsyncThunk(
 
         const likelyContracts = [...new Set([...(await FungibleTokens.getLikelyTokenContracts({ accountId })), ...WHITELISTED_CONTRACTS])];
 
-        await Promise.all(likelyContracts.map(async contractName => {
+        await Promise.all(likelyContracts.map(async (contractName) => {
             const { actions: { setContractMetadata } } = tokensSlice;
             try {
                 const contractMetadata = await getCachedContractMetadataOrFetch(contractName, getState());
@@ -91,7 +91,7 @@ const fetchToken = createAsyncThunk(
             if (!selectOneContractMetadata(getState(), { contractName })) {
                 dispatch(setContractMetadata({ contractName, metadata: contractMetadata }));
             }
-            if(accountId) {
+            if (accountId) {
                 await dispatch(fetchOwnedTokensForContract({ accountId, contractName }));
             }
         } catch (e) {
@@ -196,8 +196,8 @@ const selectOneTokenLoading = createSelector(
 export const selectNEARAsTokenWithMetadata = createSelector(
     [selectBalance, selectNearTokenFiatValueUSD],
     (nearBalance, nearTokenFiatValueUSD) => ({
-        balance: nearBalance?.balanceAvailable || "",
-        onChainFTMetadata: { symbol: "NEAR" },
+        balance: nearBalance?.balanceAvailable || '',
+        onChainFTMetadata: { symbol: 'NEAR' },
         coingeckoMetadata: { usd: nearTokenFiatValueUSD },
     })
 );

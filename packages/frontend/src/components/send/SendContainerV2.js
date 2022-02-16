@@ -114,7 +114,7 @@ const SendContainerV2 = ({
     }, [fungibleTokens]);
 
     useEffect(() => {
-        if(isMaxAmount === true) {
+        if (isMaxAmount === true) {
             setIsMaxAmount(false);
             setUserInputAmount('');
         }
@@ -160,7 +160,7 @@ const SendContainerV2 = ({
                         const formattedTokenAmount = getFormattedTokenAmount(selectedToken.balance, selectedToken.onChainFTMetadata?.symbol, selectedToken.onChainFTMetadata?.decimals);
 
                         if (!new BN(selectedToken.balance).isZero()) {
-                            Mixpanel.track("SEND Use max amount");
+                            Mixpanel.track('SEND Use max amount');
                             setIsMaxAmount(true);
                             setUserInputAmount(formattedTokenAmount.replace(/,/g, ''));
                         }
@@ -202,7 +202,7 @@ const SendContainerV2 = ({
                     localAlert={localAlert}
                     clearLocalAlert={clearLocalAlert}
                     onClickContinue={() => {
-                        Mixpanel.track("SEND Click continue to review button");
+                        Mixpanel.track('SEND Click continue to review button');
                         handleContinueToReview({
                             token: selectedToken,
                             rawAmount: getRawAmount(),
@@ -217,7 +217,7 @@ const SendContainerV2 = ({
                 <Review
                     onClickCancel={() => {
                         redirectTo('/');
-                        Mixpanel.track("SEND Click cancel button");
+                        Mixpanel.track('SEND Click cancel button');
                     }}
                     amount={getRawAmount()}
                     selectedToken={selectedToken}
